@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hồ Cá Đơn Giản</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    #aquarium {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      height: 620px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      background: linear-gradient(
+        180deg,
+        #38bdf8 0%,
+        #0284c7 52%,
+        #0c4a6e 100%
+      );
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+    }
+
+    .light-ray {
+      position: absolute;
+      top: -10%;
+      width: 160px;
+      height: 85%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent);
+      transform: skewX(-14deg);
+      pointer-events: none;
+    }
+
+    .sand {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 76px;
+      background: linear-gradient(180deg, #e7d3a3, #c9ad73);
+      border-top-left-radius: 50% 24px;
+      border-top-right-radius: 50% 24px;
+      z-index: 5;
+    }
+
+    .creature {
+      position: absolute;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+    }
+
+    .faintSchool {
+      top: 14%;
+      width: 155px;
+      z-index: 12;
+      animation: swim-faintSchool 29s linear infinite;
+    }
+
+    @keyframes swim-faintSchool {
+      0% {
+        left: 95%;
+        transform: translateY(0px) scaleX(1);
+      }
+      24% {
+        transform: translateY(-8px) scaleX(1);
+      }
+      49% {
+        left: -160px;
+        transform: translateY(8px) scaleX(1);
+      }
+      50% {
+        left: -160px;
+        transform: translateY(8px) scaleX(-1);
+      }
+      75% {
+        transform: translateY(-8px) scaleX(-1);
+      }
+      99% {
+        left: 95%;
+        transform: translateY(0px) scaleX(-1);
+      }
+      100% {
+        left: 95%;
+        transform: translateY(0px) scaleX(1);
+      }
+    }
+
+    .diver3 {
+      top: 22%;
+      width: 145px;
+      z-index: 15;
+      animation: swim-diver3 35s linear infinite;
+    }
+
+    @keyframes swim-diver3 {
+      0% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+      24% {
+        transform: translateY(-10px) scaleX(1);
+      }
+      49% {
+        left: calc(100% - 80px);
+        transform: translateY(10px) scaleX(1);
+      }
+      50% {
+        left: calc(100% - 80px);
+        transform: translateY(10px) scaleX(-1);
+      }
+      75% {
+        transform: translateY(-10px) scaleX(-1);
+      }
+      99% {
+        left: -160px;
+        transform: translateY(0px) scaleX(-1);
+      }
+      100% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+    }
+
+    .shark {
+      top: 35%;
+      width: 205px;
+      z-index: 20;
+      animation: swim-shark 21s linear infinite;
+    }
+
+    @keyframes swim-shark {
+      0% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+      24% {
+        transform: translateY(-7px) scaleX(1);
+      }
+      49% {
+        left: calc(100% - 80px);
+        transform: translateY(7px) scaleX(1);
+      }
+      50% {
+        left: calc(100% - 80px);
+        transform: translateY(7px) scaleX(-1);
+      }
+      75% {
+        transform: translateY(-7px) scaleX(-1);
+      }
+      99% {
+        left: -160px;
+        transform: translateY(0px) scaleX(-1);
+      }
+      100% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+    }
+
+    .diver2 {
+      top: 48%;
+      width: 150px;
+      z-index: 18;
+      animation: swim-diver2 38s linear infinite;
+    }
+
+    @keyframes swim-diver2 {
+      0% {
+        left: 95%;
+        transform: translateY(0px) scaleX(-1);
+      }
+      24% {
+        transform: translateY(-11px) scaleX(-1);
+      }
+      49% {
+        left: -160px;
+        transform: translateY(11px) scaleX(-1);
+      }
+      50% {
+        left: -160px;
+        transform: translateY(11px) scaleX(1);
+      }
+      75% {
+        transform: translateY(-11px) scaleX(1);
+      }
+      99% {
+        left: 95%;
+        transform: translateY(0px) scaleX(1);
+      }
+      100% {
+        left: 95%;
+        transform: translateY(0px) scaleX(-1);
+      }
+    }
+
+    .turtle {
+      top: 60%;
+      width: 140px;
+      z-index: 16;
+      animation: swim-turtle 44s linear infinite;
+    }
+
+    @keyframes swim-turtle {
+      0% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+      24% {
+        transform: translateY(-9px) scaleX(1);
+      }
+      49% {
+        left: calc(100% - 80px);
+        transform: translateY(9px) scaleX(1);
+      }
+      50% {
+        left: calc(100% - 80px);
+        transform: translateY(9px) scaleX(-1);
+      }
+      75% {
+        transform: translateY(-9px) scaleX(-1);
+      }
+      99% {
+        left: -160px;
+        transform: translateY(0px) scaleX(-1);
+      }
+      100% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+    }
+
+    .diver1 {
+      top: 66%;
+      width: 150px;
+      z-index: 17;
+      animation: swim-diver1 40s linear infinite;
+    }
+
+    @keyframes swim-diver1 {
+      0% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+      24% {
+        transform: translateY(-10px) scaleX(1);
+      }
+      49% {
+        left: calc(100% - 80px);
+        transform: translateY(10px) scaleX(1);
+      }
+      50% {
+        left: calc(100% - 80px);
+        transform: translateY(10px) scaleX(-1);
+      }
+      75% {
+        transform: translateY(-10px) scaleX(-1);
+      }
+      99% {
+        left: -160px;
+        transform: translateY(0px) scaleX(-1);
+      }
+      100% {
+        left: -160px;
+        transform: translateY(0px) scaleX(1);
+      }
+    }
+
+    .goldFishSchool {
+      top: 69%;
+      width: 120px;
+      z-index: 19;
+      animation: swim-goldFishSchool 32s linear infinite;
+    }
+
+    @keyframes swim-goldFishSchool {
+      0% {
+        left: 95%;
+        transform: translateY(0px) scaleX(-1);
+      }
+      24% {
+        transform: translateY(-12px) scaleX(-1);
+      }
+      49% {
+        left: -160px;
+        transform: translateY(12px) scaleX(-1);
+      }
+      50% {
+        left: -160px;
+        transform: translateY(12px) scaleX(1);
+      }
+      75% {
+        transform: translateY(-12px) scaleX(1);
+      }
+      99% {
+        left: 95%;
+        transform: translateY(0px) scaleX(1);
+      }
+      100% {
+        left: 95%;
+        transform: translateY(0px) scaleX(-1);
+      }
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.18));
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      pointer-events: none;
+      animation: bubbleUp var(--dur, 7s) linear infinite;
+    }
+
+    @keyframes bubbleUp {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.8);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.75;
+      }
+      50% {
+        transform: translateY(-45vh) translateX(12px) scale(1);
+        opacity: 0.55;
+      }
+      100% {
+        transform: translateY(-95vh) translateX(-10px) scale(1.15);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="aquarium" title="Nhấp vào nước để thả bong bóng">
+    <div class="light-ray" style="left: 14%;"></div>
+    <div class="light-ray" style="left: 48%; width: 210px;"></div>
+    <div class="light-ray" style="left: 76%; width: 130px;"></div>
+
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-b6c49475-6e4e-430f-8d01-fed1f348525a.png" alt="Đàn cá xanh nhỏ" class="creature faintSchool" />
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-4f674ec5-66e8-4404-8a93-856f49703413.png" alt="Thợ lặn xanh lá" class="creature diver3" />
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-a2e73fc8-fb29-480b-9c48-f055a86c1be1.png" alt="Cá mập" class="creature shark" />
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-040de459-10b4-47da-a335-b1e1413814e5.png" alt="Thợ lặn đỏ" class="creature diver2" />
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-a237f5db-50b6-440a-b51a-a7b01ef777cc.png" alt="Rùa biển" class="creature turtle" />
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-25249480-a808-4a3e-8cb1-385303ad0502.png" alt="Thợ lặn xanh dương" class="creature diver1" />
+    <img src="https://cdn.phototourl.com/anon/2026-11-21-44986ee4-adc4-4ed7-8435-ae838b82c39b.png" alt="Đàn cá vàng" class="creature goldFishSchool" />
+
+    <div class="sand"></div>
+  </div>
+  <script>
+    const tank = document.getElementById('aquarium');
+
+    function createBubble(xPercent, sizePx, durationSec) {
+      const bubble = document.createElement('span');
+      bubble.className = 'bubble';
+      bubble.style.left = xPercent + '%';
+      bubble.style.width = sizePx + 'px';
+      bubble.style.height = sizePx + 'px';
+      bubble.style.setProperty('--dur', durationSec + 's');
+      tank.appendChild(bubble);
+      setTimeout(() => bubble.remove(), durationSec * 1000);
+    }
+
+    setInterval(() => {
+      createBubble(Math.random() * 96 + 2, Math.random() * 14 + 6, Math.random() * 4 + 5);
+    }, 450);
+
+    tank.addEventListener('click', (event) => {
+      const rect = tank.getBoundingClientRect();
+      const xPercent = ((event.clientX - rect.left) / rect.width) * 100;
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          createBubble(xPercent + (Math.random() * 4 - 2), Math.random() * 12 + 6, 3.5 + Math.random() * 2);
+        }, i * 60);
+      }
+    });
+  </script>
+</body>
+</html>
